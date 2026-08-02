@@ -101,6 +101,7 @@ export default function Navbar({
         {/* Dark mode toggle — marginLeft:auto pushes this + everything after it to the right on mobile, where nav-links no longer provides that spacing */}
         <button
           onClick={onToggleDark}
+          className="icon-btn"
           style={{
             width: 36, height: 36, borderRadius: '50%',
             border: '1px solid #F4F0E8',
@@ -118,6 +119,7 @@ export default function Navbar({
           <div ref={menuRef} style={{ position: 'relative', flexShrink: 0 }}>
             <button
               onClick={() => setMenuOpen(o => !o)}
+              className="icon-btn"
               style={{
                 width: 36, height: 36, borderRadius: '50%',
                 background: '#E8591A', color: '#fff', border: 'none',

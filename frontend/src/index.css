@@ -58,6 +58,10 @@ button:focus { outline: 3px solid #E8591A55; outline-offset: 3px; }
 /* Button styles */
 .btn-primary{ background: linear-gradient(180deg,var(--brand,#E8591A),#D14A12); color:#fff; border:none; padding:10px 14px; border-radius:10px; font-weight:700; cursor:pointer; box-shadow: 0 6px 18px rgba(232,89,26,0.14); }
 .btn-ghost{ background:transparent; border:1px solid rgba(0,0,0,0.06); padding:10px 14px; border-radius:10px; cursor:pointer; }
+.icon-btn {
+  min-height: 0 !important;
+  padding: 0 !important;
+}
 
 /* Card */
 .card{ background: linear-gradient(180deg,#fff,#FBF8F6); border-radius:14px; box-shadow: 0 8px 28px rgba(26,22,18,0.06); border: 1px solid #F4F0E8; overflow:hidden; }

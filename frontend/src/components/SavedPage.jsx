@@ -76,6 +76,7 @@ export default function SavedPage({ onToggleSave, isLoggedIn, onNavigate }) {
                 <button
                   onClick={() => handleRemove(f.recipe.id)}
                   title="Remove from saved"
+                  className="icon-btn"
                   style={{ position:'absolute', top:10, right:10, width:32, height:32, borderRadius:'50%', background:'#E8591A', border:'none', cursor:'pointer', fontSize:16, display:'flex', alignItems:'center', justifyContent:'center' }}
                 >
                   🗑️

@@ -49,7 +49,7 @@ function RecipeCard({ recipe, onSave, saved, onView }) {
     >
       <div style={{ position:'relative', height:160, background:'#F4F0E8', display:'flex', alignItems:'center', justifyContent:'center', fontSize:60 }}>
         🍽️
-        <button onClick={e=>{e.stopPropagation();onSave(recipe.id);}} style={{ position:'absolute', top:10, right:10, width:32, height:32, borderRadius:'50%', background:saved?'#E8591A':'rgba(255,255,255,0.9)', border:'none', cursor:'pointer', fontSize:16, display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 2px 8px rgba(0,0,0,0.10)' }}>
+       <button onClick={e=>{e.stopPropagation();onSave(recipe.id);}} className="icon-btn" style={{ position:'absolute', top:10, right:10, width:32, height:32, borderRadius:'50%', background:saved?'#E8591A':'rgba(255,255,255,0.9)', border:'none', cursor:'pointer', fontSize:16, display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 2px 8px rgba(0,0,0,0.10)' }}>
           {saved ? '❤️' : '🤍'}
         </button>
         {recipe.score != null && (
@@ -81,7 +81,7 @@ function RecipeModal({ recipe, onClose, onSave, saved, loading }) {
       <div onClick={e=>e.stopPropagation()} style={{ background:'#fff', borderRadius:20, width:'100%', maxWidth:520, maxHeight:'90vh', overflowY:'auto', boxShadow:'0 24px 80px rgba(26,22,18,0.25)' }}>
         <div style={{ height:160, background:'#F4F0E8', display:'flex', alignItems:'center', justifyContent:'center', fontSize:72, position:'relative', borderRadius:'20px 20px 0 0' }}>
           🍽️
-          <button onClick={onClose} style={{ position:'absolute', top:12, right:12, width:34, height:34, borderRadius:'50%', background:'rgba(255,255,255,0.9)', border:'none', cursor:'pointer', fontSize:20 }}>×</button>
+          <button onClick={onClose} className="icon-btn" style={{ position:'absolute', top:12, right:12, width:34, height:34, borderRadius:'50%', background:'rgba(255,255,255,0.9)', border:'none', cursor:'pointer', fontSize:20 }}>×</button>
         </div>
         <div style={{ padding:'16px 20px 0' }}>
           <h2 style={{ margin:'0 0 6px', fontSize:20, fontWeight:700, color:'#1A1612' }}>{recipe.title}</h2>
