@@ -17,6 +17,11 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [user, setUser] = useState(null);
   const [imageSearch, setImageSearch] = useState({ results: [], detected: null });
+  const [browseAll, setBrowseAll] = useState(false);
+  const handleBrowse = () => {
+    setBrowseAll(true);
+    setPage('search');
+  };
 
   useEffect(() => {
     if (!user) { setSavedRecipes([]); return; }
@@ -106,8 +111,8 @@ function App() {
         onLogout={handleLogout}
       />
       <main key={page}>
-        {page === 'home'      && <LandingPage onNavigate={setPage} savedRecipes={savedRecipes} onToggleSave={toggleSave} />}
-        {page === 'search'    && <SearchPage onToggleSave={toggleSave} savedRecipes={savedRecipes} darkMode={darkMode} onNavigate={setPage} initialResults={imageSearch.results} initialDetected={imageSearch.detected} />}
+        {page === 'home'      && <LandingPage onNavigate={setPage} savedRecipes={savedRecipes} onToggleSave={toggleSave} onBrowse={handleBrowse} />}
+        {page === 'search'    && <SearchPage onToggleSave={toggleSave} savedRecipes={savedRecipes} darkMode={darkMode} onNavigate={setPage} initialResults={imageSearch.results} initialDetected={imageSearch.detected} browseAll={browseAll} onBrowseConsumed={() => setBrowseAll(false)} />}
         {page === 'saved'     && <SavedPage onToggleSave={toggleSave} isLoggedIn={!!user} onNavigate={setPage} />}
         {page === 'dashboard' && <DashboardPage savedRecipes={savedRecipes} onNavigate={setPage} />}
         {page === 'history'   && <HistoryPage onNavigate={setPage} darkMode={darkMode} isLoggedIn={!!user} />}

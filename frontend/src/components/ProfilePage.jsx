@@ -14,20 +14,20 @@ export default function ProfilePage({ user, onLogout, onNavigate }) {
   }
 
   return (
-    <div style={{ maxWidth: 800, margin: '40px auto', padding: '20px' }}>
+    <div style={{ maxWidth: 800, margin: '40px auto', padding: '20px', boxSizing: 'border-box' }}>
       <h2 style={{ color: '#E8591A' }}>My profile</h2>
-      <div style={{ marginTop: 18, display: 'grid', gridTemplateColumns: '1fr 300px', gap: 20 }}>
-        <div style={{ background: '#fff', borderRadius: 12, padding: 16, border: '1px solid #F4F0E8' }}>
-          <h3 style={{ marginBottom: 6 }}>{user.name}</h3>
-          <div style={{ color: '#8A7E74' }}>{user.email}</div>
+      <div style={{ marginTop: 18, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20 }}>
+        <div style={{ background: '#fff', borderRadius: 12, padding: 16, border: '1px solid #F4F0E8', boxSizing: 'border-box' }}>
+          <h3 style={{ marginBottom: 6, wordBreak: 'break-word' }}>{user.name}</h3>
+          <div style={{ color: '#8A7E74', wordBreak: 'break-word' }}>{user.email}</div>
 
-          <div style={{ marginTop: 18 }}>
+          <div style={{ marginTop: 18, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <button onClick={() => onNavigate('dashboard')} style={{ padding: '8px 14px', borderRadius: 10, border: 'none', background: '#E8591A', color: '#fff', fontWeight: 700, cursor: 'pointer' }}>Go to dashboard</button>
-            <button onClick={() => onLogout()} style={{ padding: '8px 14px', borderRadius: 10, border: '1px solid #E8591A', background: 'transparent', color: '#E8591A', fontWeight: 700, cursor: 'pointer', marginLeft: 10 }}>Log out</button>
+            <button onClick={() => onLogout()} style={{ padding: '8px 14px', borderRadius: 10, border: '1px solid #E8591A', background: 'transparent', color: '#E8591A', fontWeight: 700, cursor: 'pointer' }}>Log out</button>
           </div>
         </div>
 
-        <div style={{ background: '#fff', borderRadius: 12, padding: 16, border: '1px solid #F4F0E8' }}>
+        <div style={{ background: '#fff', borderRadius: 12, padding: 16, border: '1px solid #F4F0E8', boxSizing: 'border-box' }}>
           <h4 style={{ marginTop: 0 }}>Account</h4>
           <div style={{ color: '#8A7E74', fontSize: 13 }}>Currently signed in</div>
           <div style={{ marginTop: 12 }}>

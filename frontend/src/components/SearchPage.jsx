@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import * as React from 'react';
 import { API } from '../lib/api';
 
 const INGREDIENT_SUGGESTIONS = [
@@ -134,7 +135,7 @@ function RecipeModal({ recipe, onClose, onSave, saved, loading }) {
   );
 }
 
-export default function SearchPage({ onToggleSave, savedRecipes, onViewRecipe, onNavigate, initialResults, initialDetected }) {
+export default function SearchPage({ onToggleSave, savedRecipes, onViewRecipe, onNavigate, initialResults, initialDetected, browseAll, onBrowseConsumed }) {
   const [inputValue, setInputValue]   = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
@@ -151,6 +152,31 @@ export default function SearchPage({ onToggleSave, savedRecipes, onViewRecipe, o
       setInputValue(''); setSuggestions([]);
     }
   };
+  const loadAllRecipes = async () => {
+    setLoading(true); setSearched(true); setError(''); setDetected(null);
+    try {
+      const res = await API('/recipes');
+      const data = await res.json();
+      if (!res.ok) {
+        setError('Could not load recipes.');
+        setResults([]);
+      } else {
+        setResults(data);
+      }
+    } catch (e) {
+      setError('Network error loading recipes.');
+      setResults([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  React.useEffect(() => {
+    if (browseAll) {
+      loadAllRecipes();
+      onBrowseConsumed?.();
+    }
+  }, [browseAll]);
 
   const handleView = async (recipe) => {
     setViewing(recipe);
@@ -331,8 +357,8 @@ export default function SearchPage({ onToggleSave, savedRecipes, onViewRecipe, o
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(260px,1fr))', gap:16 }}>
             {results.map(r => (
               <div key={r.id}>
-                <RecipeCard recipe={r} onSave={onToggleSave} saved={savedRecipes.includes(r.id)} onView={handleView} />
-                <div style={{ marginTop:8, padding:'0 4px' }}><MatchBar pct={toPercent(r.score)}/></div>
+               <RecipeCard recipe={r} onSave={onToggleSave} saved={savedRecipes.includes(r.id)} onView={handleView} />
+                {r.score != null && <div style={{ marginTop:8, padding:'0 4px' }}><MatchBar pct={toPercent(r.score)}/></div>}
               </div>
             ))}
           </div>

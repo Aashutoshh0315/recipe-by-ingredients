@@ -1,4 +1,4 @@
-export default function LandingPage({ onNavigate }) {
+export default function LandingPage({ onNavigate, onBrowse }) {
   return (
     <div style={{
       minHeight: 'calc(100vh - 60px)',
@@ -29,19 +29,34 @@ export default function LandingPage({ onNavigate }) {
           Tell us your ingredients. We'll find the perfect recipe — instantly, intelligently.
         </p>
 
-        <button
-          onClick={() => onNavigate && onNavigate('search')}
-          style={{
-            padding: '15px 36px', borderRadius: 14,
-            background: '#E8591A', color: '#fff', border: 'none',
-            fontSize: 16, fontWeight: 700, cursor: 'pointer',
-            transition: 'background 0.2s', letterSpacing: 0.3,
-          }}
-          onMouseEnter={e => e.currentTarget.style.background = '#D14A12'}
-          onMouseLeave={e => e.currentTarget.style.background = '#E8591A'}
-        >
-          🍳 Find Recipes
-        </button>
+        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <button
+            onClick={() => onNavigate && onNavigate('search')}
+            style={{
+              padding: '15px 36px', borderRadius: 14,
+              background: '#E8591A', color: '#fff', border: 'none',
+              fontSize: 16, fontWeight: 700, cursor: 'pointer',
+              transition: 'background 0.2s', letterSpacing: 0.3,
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = '#D14A12'}
+            onMouseLeave={e => e.currentTarget.style.background = '#E8591A'}
+          >
+            🍳 Find Recipes
+          </button>
+          <button
+            onClick={() => onBrowse && onBrowse()}
+            style={{
+              padding: '15px 36px', borderRadius: 14,
+              background: 'transparent', color: '#fff',
+              border: '1.5px solid #4A3F35', fontSize: 16, fontWeight: 700,
+              cursor: 'pointer', transition: 'border-color 0.2s', letterSpacing: 0.3,
+            }}
+            onMouseEnter={e => e.currentTarget.style.borderColor = '#E8591A'}
+            onMouseLeave={e => e.currentTarget.style.borderColor = '#4A3F35'}
+          >
+            📖 Browse All
+          </button>
+        </div>
       </div>
     </div>
   );
