@@ -112,11 +112,11 @@ function App() {
       />
       <main key={page}>
         {page === 'home'      && <LandingPage onNavigate={setPage} savedRecipes={savedRecipes} onToggleSave={toggleSave} onBrowse={handleBrowse} />}
-        {page === 'search'    && <SearchPage onToggleSave={toggleSave} savedRecipes={savedRecipes} darkMode={darkMode} onNavigate={setPage} initialResults={imageSearch.results} initialDetected={imageSearch.detected} browseAll={browseAll} onBrowseConsumed={() => setBrowseAll(false)} />}
+        {page === 'search'    && <SearchPage onToggleSave={toggleSave} savedRecipes={savedRecipes} darkMode={darkMode} onNavigate={setPage} initialResults={imageSearch.results} initialDetected={imageSearch.detected} browseAll={browseAll} onBrowseConsumed={() => setBrowseAll(false)} isLoggedIn={!!user} />}
         {page === 'saved'     && <SavedPage onToggleSave={toggleSave} isLoggedIn={!!user} onNavigate={setPage} />}
         {page === 'dashboard' && <DashboardPage savedRecipes={savedRecipes} onNavigate={setPage} />}
         {page === 'history'   && <HistoryPage onNavigate={setPage} darkMode={darkMode} isLoggedIn={!!user} />}
-        {page === 'camera'    && <CameraPage onNavigate={setPage} darkMode={darkMode} onCapture={handleImageCapture} />}
+        {page === 'camera'    && <CameraPage onNavigate={setPage} darkMode={darkMode} onCapture={handleImageCapture} isLoggedIn={!!user} />}
         {page === 'profile'   && <ProfilePage user={user} onLogout={handleLogout} onNavigate={setPage} />}
         {page === 'login'     && <LoginPage onLogin={handleLogin} onNavigate={setPage} darkMode={darkMode} />}
         {page === 'register'  && <RegisterPage onRegister={handleRegister} onNavigate={setPage} darkMode={darkMode} />}

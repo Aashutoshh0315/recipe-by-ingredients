@@ -1,6 +1,21 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-export default function CameraPage({ onNavigate, darkMode, onCapture }) {
+export default function CameraPage({ onNavigate, darkMode, onCapture, isLoggedIn }) {
+  if (!isLoggedIn) {
+    return (
+      <div style={{ maxWidth: 600, margin: '40px auto', padding: '0 20px', textAlign: 'center' }}>
+        <h2 style={{ color: '#E8591A' }}>Scan your ingredients</h2>
+        <p style={{ color: darkMode ? '#A8A098' : '#8A7F70', marginBottom: 16 }}>
+          Log in to use the camera and scan your ingredients.
+        </p>
+        <div style={{ display: 'flex', gap: 8, justifyContent: 'center' }}>
+          <button onClick={() => onNavigate('login')} style={{ padding: '10px 16px', borderRadius: 10, border: 'none', background: '#E8591A', color: '#fff', fontWeight: 700, cursor: 'pointer' }}>Log in</button>
+          <button onClick={() => onNavigate('register')} style={{ padding: '10px 16px', borderRadius: 10, border: '1px solid #E8591A', background: 'transparent', color: '#E8591A', fontWeight: 700, cursor: 'pointer' }}>Sign up</button>
+        </div>
+      </div>
+    );
+  }
+
   const videoRef = useRef(null);
   const [error, setError] = useState(null);
   const [streaming, setStreaming] = useState(false);

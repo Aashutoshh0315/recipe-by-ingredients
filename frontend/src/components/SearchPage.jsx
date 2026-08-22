@@ -135,7 +135,7 @@ function RecipeModal({ recipe, onClose, onSave, saved, loading }) {
   );
 }
 
-export default function SearchPage({ onToggleSave, savedRecipes, onViewRecipe, onNavigate, initialResults, initialDetected, browseAll, onBrowseConsumed }) {
+export default function SearchPage({ onToggleSave, savedRecipes, onViewRecipe, onNavigate, initialResults, initialDetected, browseAll, onBrowseConsumed, isLoggedIn }) {
   const [inputValue, setInputValue]   = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
@@ -284,7 +284,7 @@ export default function SearchPage({ onToggleSave, savedRecipes, onViewRecipe, o
           <button
             type="button"
             title="Take a photo"
-            onClick={() => onNavigate?.('camera')}
+           onClick={() => onNavigate?.(isLoggedIn ? 'camera' : 'login')}
             style={{ width:36, height:36, borderRadius:'50%', border:'none', background:'#F4F0E8', cursor:'pointer', fontSize:16, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}
           >
             📷
